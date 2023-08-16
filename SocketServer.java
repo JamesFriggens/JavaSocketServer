@@ -9,12 +9,12 @@ import java.io.PrintWriter;
 
 public class SocketServer{
 
+
     private int port;
+    private boolean isServerOnline;
     private String clientMessage;
     private ServerSocket serverSocket;
     private ArrayList<String> keywords;
-    
-
     
 
     public SocketServer(int port){
@@ -32,10 +32,13 @@ public class SocketServer{
         }
     }
 
+
     public void startSocketServer(){
-
+        
+        setServerStatus(true);
+        
         while (true){
-
+            
              try (Socket clientSocket = serverSocket.accept()) {
                 System.out.println("Connection from: " + clientSocket.getInetAddress());
 
@@ -46,7 +49,7 @@ public class SocketServer{
                 // Read input from the client
                 clientMessage = in.readLine();
 
-                if(searchKeyword(clientMessage)){
+                if(searchKeyword(clientMessage).equals(clientMessage)){
                     // whatever you want to do
                     // you can use out.println("your message here" to return a message to the device connected to the socket)
                 }
@@ -57,14 +60,17 @@ public class SocketServer{
             } 
             
             catch (IOException e) {
+                setServerStatus(false);
                 e.printStackTrace();
             }
         }
     }
-    
+
+
     public void addKeyword(String word){
         keywords.add(word);
     }
+
 
     public void removeKeyword(String word){
 
@@ -75,7 +81,22 @@ public class SocketServer{
         }
     }
 
-    public Boolean searchKeyword(String word){
+
+    public String searchKeyword(String word){
+
+        String x;
+
+        for (int i = 0; i < keywords.size(); i++){
+            if(keywords.get(i).equals(word)){
+                return keywords.get(i);
+            }
+        }
+
+        return "String not found";
+    }
+
+
+    public boolean isWordInKeyword(String word){
 
         for (int i = 0; i < keywords.size(); i++){
             if(keywords.get(i).equals(word)){
@@ -85,13 +106,23 @@ public class SocketServer{
 
         return false;
     }
-    
+
+
     public int getport(){
         return port;
     }
 
+
     public void setport(int num){
         port = num;
+    }
+
+    public void setServerStatus(boolean status){
+        isServerOnline = status;
+    }
+
+    public boolean getServerStatus(){
+        return isServerOnline;
     }
 
 
