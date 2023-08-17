@@ -37,7 +37,7 @@ public class SocketServer{
 
 
     public void initiateSocketServer(){
-        keywords.add("shutdown")
+        keywords.add("shutdown");
     }
 
 
