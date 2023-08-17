@@ -14,6 +14,7 @@ public class SocketServer{
 
     private int port;
     private boolean isServerOnline;
+
     private String clientMessage;
     private ServerSocket serverSocket;
     private ArrayList<String> keywords;
@@ -86,7 +87,6 @@ public class SocketServer{
 
     public String searchKeyword(String word){
 
-        String x;
 
         for (int i = 0; i < keywords.size(); i++){
             if(keywords.get(i).equals(word)){
