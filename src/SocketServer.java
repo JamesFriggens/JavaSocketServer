@@ -36,6 +36,11 @@ public class SocketServer{
     }
 
 
+    public void initiateSocketServer(){
+        keywords.add("shutdown")
+    }
+
+
     public void startSocketServer(){
         
         setServerStatus(true);
@@ -52,7 +57,7 @@ public class SocketServer{
                 // Read input from the client
                 clientMessage = in.readLine();
 
-                if(searchKeyword(clientMessage).equals(clientMessage)){
+                if(searchKeyword(clientMessage).equals("shutdown")){
                     // whatever you want to do
                     // you can use out.println("your message here" to return a message to the device connected to the socket)
                 }
