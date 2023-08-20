@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
+import java.lang.Thread;
+
 
 public class SocketServer{
 
@@ -115,12 +117,12 @@ public class SocketServer{
     }
 
 
-    public int getport(){
+    public int getPort(){
         return port;
     }
 
 
-    public void setport(int num){
+    public void setPort(int num){
         port = num;
     }
 
@@ -130,6 +132,11 @@ public class SocketServer{
 
     public boolean getServerStatus(){
         return isServerOnline;
+    }
+
+
+    public String toString(){
+        return "Server on port " + getPort() + " and online status equals " + getServerStatus();
     }
 
 
