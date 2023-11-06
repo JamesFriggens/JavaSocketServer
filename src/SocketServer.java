@@ -39,12 +39,32 @@ public class SocketServer{
 
 
     public void initiateSocketServer(){
-        keywords.add("shutdown");
+        System.out.println("Socket Server Initialized");
+        
+        Thread thread = new Thread(() -> {
+
+            while (!Thread.currentThread().isInterrupted()){
+                for(int i = 0; i < keywords.size(); i++){
+                    addKeyword(keywords.get(i));
+                }
+            }
+        });
+
+        thread.start();
+
+        thread.interrupt();
+        
+        System.out.println(thread.interrupted());
+
     }
 
 
     public void startSocketServer(){
         
+        Thread thread = new Thread(() -> {
+
+        System.out.println("Socket Server Live");
+
         setServerStatus(true);
         
         while (true){
@@ -74,6 +94,9 @@ public class SocketServer{
                 e.printStackTrace();
             }
         }
+    });
+
+    thread.start();
     }
 
 
@@ -114,6 +137,14 @@ public class SocketServer{
         }
 
         return false;
+    }
+
+    public void getKeywords(){
+
+        for (int i = 0; i < keywords.size(); i++){
+            System.out.println(keywords.get(i));
+        }
+        
     }
 
 
