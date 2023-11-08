@@ -10,6 +10,9 @@ public class Main {
 
         server.addKeyword("hi");
         server.addKeyword("bob");
+        server.addKeyword("end");
+        
+
 
         server.initiateSocketServer();
         server.startSocketServer();

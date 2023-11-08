@@ -12,7 +12,7 @@ import java.lang.Thread;
 
 
 public class SocketServer{
-
+    
 
     private int port;
     private boolean isServerOnline;
@@ -52,10 +52,9 @@ public class SocketServer{
 
         thread.start();
 
+        // interrupts thread when done executing 
         thread.interrupt();
         
-        System.out.println(thread.interrupted());
-
     }
 
 
