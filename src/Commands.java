@@ -1,7 +1,5 @@
 package src;
 
-import java.lang.reflect.Method;
-
 public class Commands {
     
     public void method1() {

@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
+//import java.io.PrintWriter;
 
 import java.lang.Thread;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 // class where you put in your custom methods to be executed
-import src.Commands;
+// import src.Commands;
 
 
 public class SocketServer{
@@ -78,7 +78,7 @@ public class SocketServer{
 
                 // Create input and output streams
                 BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream(), "UTF-8"));
-                PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+                // PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 
                 // Read input from the client
                 clientMessage = in.readLine();
