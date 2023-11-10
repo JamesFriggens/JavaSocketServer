@@ -157,6 +157,21 @@ public class SocketServer{
     }
 
 
+    public void getMethodNames(){
+
+        Class<?> commands = Commands.class;
+
+        // Get all declared methods, including public, protected, default (package) access, and private methods
+        Method[] methods = commands.getDeclaredMethods();
+
+        System.out.println("List of methods in Commands class:");
+        for (Method method : methods) {
+            System.out.println(method.getName());
+        }
+
+    }
+
+
     public int getPort(){
         return port;
     }

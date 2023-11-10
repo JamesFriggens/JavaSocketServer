@@ -38,6 +38,7 @@ public class Main {
         server.getKeywords();
 
         System.out.println(server.toString());
+        server.getMethodNames();
         
     }
 
