@@ -21,6 +21,7 @@ public class SocketServer{
 
     private int port;
     private boolean isServerOnline;
+    private String password;
 
     private String clientMessage;
     private ServerSocket serverSocket;
@@ -31,6 +32,22 @@ public class SocketServer{
 
         this.port = port;
 
+        keywords = new ArrayList<String>();
+
+        try{
+            serverSocket = new ServerSocket(port);
+        }
+
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public SocketServer(int port, String password){
+        
+        this.port = port;
+        this.password = password;
+        
         keywords = new ArrayList<String>();
 
         try{
