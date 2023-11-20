@@ -17,28 +17,28 @@ public class Main {
         server.initiateSocketServer();
         server.startSocketServer();
 
-        try {
-            Thread.sleep(1000);
-        } 
+        // try {
+        //     Thread.sleep(1000);
+        // } 
         
-        catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        // catch (InterruptedException e) {
+        //     e.printStackTrace();
+        // }
 
-        System.out.println(server.toString());
+        // System.out.println(server.toString());
 
-        try {
-            Thread.sleep(1000);
-        } 
+        // try {
+        //     Thread.sleep(1000);
+        // } 
         
-        catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        // catch (InterruptedException e) {
+        //     e.printStackTrace();
+        // }
 
-        server.getKeywords();
+        // server.getKeywords();
 
-        System.out.println(server.toString());
-        server.getMethodNames();
+        // System.out.println(server.toString());
+        // server.getMethodNames();
         
     }
 

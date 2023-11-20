@@ -97,28 +97,41 @@ public class SocketServer{
                 BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream(), "UTF-8"));
                 // PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 
+
                 // Read input from the client
-                clientMessage = in.readLine();
-                System.out.println(clientMessage);
+                // clientMessage = in.readLine();
 
-                Commands commands = new Commands();
+                while ((clientMessage = in.readLine()) != null){
+                    
+                    // clientMessage = in.readLine();
+                    System.out.println(clientMessage);
 
-                try {
-                    // Use Java reflection to find and invoke the method by name
-                    Method method = Commands.class.getMethod(clientMessage);
-                    method.invoke(commands);
-                } catch (NoSuchMethodException e) {
-                    System.err.println("Method not found: " + clientMessage);
-                } catch (IllegalAccessException | InvocationTargetException e) {
-                    System.err.println("Error invoking the method: " + e.getMessage());
+                    if(clientMessage.equals("exit")){
+                        clientSocket.close();
+                        break;
+                    }
+
+                    Commands commands = new Commands();
+
+                    try {
+                        // Use Java reflection to find and invoke the method by name
+                        Method method = Commands.class.getMethod(clientMessage);
+                        method.invoke(commands);
+                    } catch (NoSuchMethodException e) {
+                        System.err.println("Method not found: " + clientMessage);
+                    } catch (IllegalAccessException | InvocationTargetException e) {
+                        System.err.println("Error invoking the method: " + e.getMessage());
+                    }
+                }
+                    
+                } 
+                
+                catch (IOException e) {
+                    setServerStatus(false);
+                    e.printStackTrace();
                 }
                 
-            } 
             
-            catch (IOException e) {
-                setServerStatus(false);
-                e.printStackTrace();
-            }
         }
     });
 
