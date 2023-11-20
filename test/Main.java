@@ -8,9 +8,9 @@ public class Main {
 
         SocketServer server = new SocketServer(9997);
 
-        server.addKeyword("hi");
-        server.addKeyword("bob");
-        server.addKeyword("end");
+        // server.addKeyword("hi");
+        // server.addKeyword("bob");
+        // server.addKeyword("end");
         
 
 

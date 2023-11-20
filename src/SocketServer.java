@@ -25,14 +25,12 @@ public class SocketServer{
 
     private String clientMessage;
     private ServerSocket serverSocket;
-    private ArrayList<String> keywords;
     
 
     public SocketServer(int port){
 
         this.port = port;
 
-        keywords = new ArrayList<String>();
 
         try{
             serverSocket = new ServerSocket(port);
@@ -48,7 +46,6 @@ public class SocketServer{
         this.port = port;
         this.password = password;
         
-        keywords = new ArrayList<String>();
 
         try{
             serverSocket = new ServerSocket(port);
@@ -61,22 +58,7 @@ public class SocketServer{
 
 
     public void initiateSocketServer(){
-        System.out.println("Socket Server Initialized");
-        
-        Thread thread = new Thread(() -> {
-
-            while (!Thread.currentThread().isInterrupted()){
-                for(int i = 0; i < keywords.size(); i++){
-                    addKeyword(keywords.get(i));
-                }
-            }
-        });
-
-        thread.start();
-
-        // interrupts thread when done executing 
-        thread.interrupt();
-        
+        System.out.println("Socket Server Initialized");      
     }
 
 
@@ -136,54 +118,6 @@ public class SocketServer{
     });
 
     thread.start();
-    }
-
-
-    public void addKeyword(String word){
-        keywords.add(word);
-    }
-
-
-    public void removeKeyword(String word){
-
-        for (int i = 0; i < keywords.size(); i++){
-            if (keywords.get(i).equals(word)){
-                keywords.remove(i);
-            }
-        }
-    }
-
-
-    public String searchKeyword(String word){
-
-
-        for (int i = 0; i < keywords.size(); i++){
-            if(keywords.get(i).equals(word)){
-                return keywords.get(i);
-            }
-        }
-
-        return "String not found";
-    }
-
-
-    public boolean isWordInKeyword(String word){
-
-        for (int i = 0; i < keywords.size(); i++){
-            if(keywords.get(i).equals(word)){
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public void getKeywords(){
-
-        for (int i = 0; i < keywords.size(); i++){
-            System.out.println(keywords.get(i));
-        }
-        
     }
 
 
