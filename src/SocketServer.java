@@ -88,6 +88,7 @@ public class SocketServer{
                     // clientMessage = in.readLine();
                     System.out.println(clientMessage);
 
+                    
                     if(clientMessage.equals("exit")){
                         clientSocket.close();
                         break;
